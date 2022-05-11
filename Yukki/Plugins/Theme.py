@@ -29,15 +29,15 @@ themes2 = [
     "yellow",
 ]
 
-__MODULE__ = "Theme"
+__MODULE__ = "• الخلفيات •"
 __HELP__ = """
 
 
 /settheme
-- Set a theme for thumbnails.
+- تعيين موضوع للصور المصغرة.
 
 /theme
-- Check Theme for your chat.
+- تحقق موضوع للدردشة الخاصة بك.
 """
 
 
