@@ -11,17 +11,17 @@ def others_markup(videoid, user_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="🔎 كلمات البحث",
+                text="• 🔎 كلمات البحث •",
                 callback_data=f"lyrics {videoid}|{user_id}",
             )
         ],
         [
             InlineKeyboardButton(
-                text="✚ Your Playlist",
+                text="✚ قائمة التشغيل الخاصة بك •",
                 callback_data=f"your_playlist {videoid}|{user_id}",
             ),
             InlineKeyboardButton(
-                text="✚ Group Playlist",
+                text="✚ قائمة التشغيل الجماعية •",
                 callback_data=f"group_playlist {videoid}|{user_id}",
             ),
         ],
