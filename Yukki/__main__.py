@@ -15,7 +15,7 @@ from config import (LOG_GROUP_ID, LOG_SESSION, STRING1, STRING2, STRING3,
 from Yukki import (ASS_CLI_1, ASS_CLI_2, ASS_CLI_3, ASS_CLI_4, ASS_CLI_5,
                    ASSID1, ASSID2, ASSID3, ASSID4, ASSID5, ASSNAME1, ASSNAME2,
                    ASSNAME3, ASSNAME4, ASSNAME5, BOT_ID, BOT_NAME, LOG_CLIENT,
-                   OWNER_ID, SUDOERS, app, random_assistant)
+                   OWNER_ID, app)
 from Yukki.Core.Clients.cli import LOG_CLIENT
 from Yukki.Core.PyTgCalls.Yukki import (pytgcalls1, pytgcalls2, pytgcalls3,
                                         pytgcalls4, pytgcalls5)
@@ -26,12 +26,6 @@ from Yukki.Inline import private_panel
 from Yukki.Plugins import ALL_MODULES
 from Yukki.Utilities.inline import paginate_modules
 
-try:
-    from config import START_IMG_URL
-except:
-    START_IMG_URL = None
-
-
 loop = asyncio.get_event_loop()
 console = Console()
 HELPABLE = {}
@@ -41,12 +35,6 @@ async def initiate_bot():
     with console.status(
         "[magenta] Finalizing Booting...",
     ) as status:
-        ass_count = len(random_assistant)
-        if ass_count == 0:
-            console.print(
-                f"\n[red] No Assistant Clients Vars Defined!.. Exiting Process"
-            )
-            return
         try:
             chats = await get_active_video_chats()
             for chat in chats:
@@ -241,11 +229,12 @@ async def initiate_bot():
     console.print(f"\n[red]Stopping Bot")
 
 
-home_text_pm = f"""Hello ,
-My name is {BOT_NAME}.
-A Telegram Music+Video Streaming bot with some useful features.
+home_text_pm = f"""᥀︙ههلا عمࢪي ,
+᥀︙انا بۅت اسمي {BOT_NAME}.
+᥀︙استطيع تشغيل المۅسيقى والفديۅ في المكالمة الصۅتية
+᥀︙اضفني الى مجمۅعتك وقم بࢪفعي مشࢪف ثم اࢪسل /play 
 
-All commands can be used with: / """
+᥀︙يمكن استخدام جميع الاوامࢪ مع: / """
 
 
 @app.on_message(filters.command("help") & filters.private)
@@ -366,17 +355,10 @@ async def start_command(_, message):
                 )
             return
     out = private_panel()
-    if START_IMG_URL is None:
-        await message.reply_text(
-            home_text_pm,
-            reply_markup=InlineKeyboardMarkup(out[1]),
-        )
-    else:
-        await message.reply_photo(
-            photo=START_IMG_URL,
-            caption=home_text_pm,
-            reply_markup=InlineKeyboardMarkup(out[1]),
-        )
+    await message.reply_text(
+        home_text_pm,
+        reply_markup=InlineKeyboardMarkup(out[1]),
+    )
     if await is_on_off(5):
         sender_id = message.from_user.id
         sender_name = message.from_user.first_name
@@ -392,11 +374,11 @@ async def help_parser(name, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
-        """Hello {first_name},
+        """اهلا {first_name},
 
-Click on the buttons for more information.
+انقر على الأزرار لمزيد من المعلومات .
 
-All commands can be used with: /
+يمكن استخدام جميع الأوامر مع: /
 """.format(
             first_name=name
         ),
@@ -410,15 +392,6 @@ async def shikhar(_, CallbackQuery):
     await CallbackQuery.message.edit(text, reply_markup=keyboard)
 
 
-@app.on_callback_query(filters.regex("search_helper_mess"))
-async def search_helper_mess(_, CallbackQuery):
-    await CallbackQuery.message.delete()
-    text, keyboard = await help_parser(CallbackQuery.from_user.mention)
-    await app.send_message(
-        CallbackQuery.message.chat.id, text, reply_markup=keyboard
-    )
-
-
 @app.on_callback_query(filters.regex(r"help_(.*?)"))
 async def help_button(client, query):
     home_match = re.match(r"help_home\((.+?)\)", query.data)
@@ -429,21 +402,12 @@ async def help_button(client, query):
     create_match = re.match(r"help_create", query.data)
     top_text = f"""Hello {query.from_user.first_name},
 
-Click on the buttons for more information.
+انقر على الأزرار لمزيد من المعلومات.
 
-All commands can be used with: /
+يمكنك استخدام جميع الأوامر مع: /
  """
     if mod_match:
         module = mod_match.group(1)
-        if str(module) == "sudousers":
-            userid = query.from_user.id
-            if userid in SUDOERS:
-                pass
-            else:
-                return await query.answer(
-                    "This Button can only be accessed by SUDO USERS",
-                    show_alert=True,
-                )
         text = (
             "{} **{}**:\n".format(
                 "Here is the help for", HELPABLE[module].__MODULE__
