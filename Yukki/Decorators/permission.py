@@ -5,32 +5,30 @@ from Yukki import BOT_ID, app
 
 def PermissionCheck(mystic):
     async def wrapper(_, message):
-        if message.chat.type == "private":
-            return await mystic(_, message)
         a = await app.get_chat_member(message.chat.id, BOT_ID)
         if a.status != "administrator":
             return await message.reply_text(
-                "I need to be admin with some permissions:\n"
-                + "\n- **can_manage_voice_chats:** To manage voice chats"
-                + "\n- **can_delete_messages:** To delete Bot's Searched Waste"
-                + "\n- **can_invite_users**: For inviting assistant to chat."
+                "أحتاج أن أكون مشرفًا مع بعض الصلاحيات:\n"
+                + "\n- *صلاحيه لإدارة الدردشات الصوتية "
+                + "\n- **صلاحيه حذف الرسائل:** لحذف نفايات البوت التي تم البحث عنها"
+                + "\n- **صلاحيه دعوه المستخدمين**: لدعوة الحساب المساعد للدردشة."
             )
         if not a.can_manage_voice_chats:
             await message.reply_text(
-                "I don't have the required permission to perform this action."
-                + "\n**Permission:** __MANAGE VOICE CHATS__"
+                "انا لا امتلك صلاحيات  كامله يرجى ترقيتي."
+                + "\n**صلاحيه لإدارة الدردشات الصوتية"
             )
             return
         if not a.can_delete_messages:
             await message.reply_text(
-                "I don't have the required permission to perform this action."
-                + "\n**Permission:** __DELETE MESSAGES__"
+                "انا لا امتلك صلاحيات  كامله يرجى ترقيتي."
+                + "\n**صلاحيه حذف الرسائل"
             )
             return
         if not a.can_invite_users:
             await message.reply_text(
-                "I don't have the required permission to perform this action."
-                + "\n**Permission:** __INVITE USERS VIA LINK__"
+                "انا لا امتلك صلاحيات  كامله يرجى ترقيتي."
+                + "\n**صلاحيه دعوه المستخدمين  واضافه مستخدمين"
             )
             return
         return await mystic(_, message)
