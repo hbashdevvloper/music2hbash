@@ -9,21 +9,21 @@ from Yukki.Decorators.admins import AdminActual
 from Yukki.Utilities.changers import (alpha_to_int, int_to_alpha,
                                       time_to_seconds)
 
-__MODULE__ = "Auth Users"
+__MODULE__ = "• اوامࢪ المصادقة •"
 __HELP__ = """
 
 **Note:**
--Auth users can skip, pause, stop, resume Voice Chats even without Admin Rights.
+-يمكن لمستخدمي المصادقة تخطي الدردشات الصوتية وإيقافها مؤقتًا وإيقافها واستئنافها حتى بدون ترقيتهم إلى مشرفين.
 
 
-/auth [Username or Reply to a Message] 
-- Add a user to AUTH LIST of the group.
+/auth [اسم المستخدم أو الرد على الرسالة] 
+- أضف مستخدمًا إلى قائمة مصادقه المجموعة.
 
-/unauth [Username or Reply to a Message] 
-- Remove a user from AUTH LIST of the group.
+/unauth [اسم المستخدم أو الرد على الرسالة] 
+- قم بإزالة مستخدم من قائمة مصادقه المجموعة.
 
 /authusers 
-- Check AUTH LIST of the group.
+- تحقق من قائمة المصادقة.
 """
 
 
@@ -154,5 +154,5 @@ async def authusers(_, message: Message):
             except Exception:
                 continue
             msg += f"{j}➤ {user}[`{user_id}`]\n"
-            msg += f"    ┗ Added By:- {admin_name}[`{admin_id}`]\n\n"
+            msg += f"    ┗ أضيفت من قبل:- {admin_name}[`{admin_id}`]\n\n"
         await m.edit_text(msg)
