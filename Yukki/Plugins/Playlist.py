@@ -15,24 +15,24 @@ from Yukki.Inline import (add_genre_markup, check_genre_markup, check_markup,
                           others_markup, play_genre_playlist, playlist_markup,
                           third_playlist_markup)
 
-__MODULE__ = "Playlist"
+__MODULE__ = "• اوامࢪ قائمة التشغيل •"
 __HELP__ = """
 
 
 /playplaylist 
-- Start playing Your Saved Playlist.
+- ابدء تشغيل قائمة التشغيل المحفوظة.
 
 
 /playlist 
-- Check Your Saved Playlist On Servers.
+- تحقق من قائمة التشغيل المحفوظة على الخوادم.
 
 
 /delmyplaylist
-- Delete any saved music in your playlist
+- احذف أي موسيقى محفوظة في قائمة التشغيل الخاصة بك
 
 
 /delgroupplaylist
-- Delete any saved music in your group's playlist [Requires Admin Rights.]
+- احذف أي موسيقى محفوظة في قائمة التشغيل الخاصة بمجموعتك [يتطلب ان تكون مشرف.]
 """
 
 
