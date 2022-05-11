@@ -10,7 +10,7 @@ def check_markup(user_name, user_id, videoid):
                 callback_data=f"playlist_check {user_id}|Group|{videoid}",
             ),
             InlineKeyboardButton(
-                text=f"{user_name[:8]}'اغانيك",
+                text=f"{user_name[:8]}'اغانيك •",
                 callback_data=f"playlist_check {user_id}|Personal|{videoid}",
             ),
         ],
@@ -27,7 +27,7 @@ def playlist_markup(user_name, user_id, videoid):
                 callback_data=f"show_genre {user_id}|Group|{videoid}",
             ),
             InlineKeyboardButton(
-                text=f"{user_name[:8]}'اغانيك",
+                text=f"{user_name[:8]}'اغانيك •",
                 callback_data=f"show_genre {user_id}|Personal|{videoid}",
             ),
         ],
@@ -191,13 +191,13 @@ def third_playlist_markup(user_name, user_id, third_name, userid, videoid):
                 callback_data=f"show_genre {user_id}|Group|{videoid}",
             ),
             InlineKeyboardButton(
-                text=f"{user_name[:8]}'اغانيك",
+                text=f"{user_name[:8]}'اغانيك •",
                 callback_data=f"show_genre {user_id}|Personal|{videoid}",
             ),
         ],
         [
             InlineKeyboardButton(
-                text=f"{third_name[:16]}'اغانيك",
+                text=f"{third_name[:16]}'اغانيك •",
                 callback_data=f"show_genre {userid}|third|{videoid}",
             ),
         ],
