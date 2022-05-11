@@ -11,11 +11,11 @@ from Yukki import MUSIC_BOT_NAME, app
 __MODULE__ = "Lyrics"
 __HELP__ = """
 
-/Lyrics [Music Name]
-- Searches Lyrics for the particular Music on web.
+/Lyrics [اسم موسيقى]
+- يبحث في كلمات عن موسيقى معينة على الويب.
 
 **Note**:
-Inline button of Lyrics has some bugs. Searches only 50% results. You can use command instead if you want lyrics for any playing music.
+يحتوي الزر المضمن في الأغاني على بعض الأخطاء. يبحث فقط عن 50٪ من النتائج. يمكنك استخدام الأمر بدلاً من ذلك إذا كنت تريد كلمات لأي موسيقى يتم تشغيلها..
 
 """
 
