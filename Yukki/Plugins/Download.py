@@ -58,11 +58,11 @@ async def ytdata(_, CallbackQuery):
 
 
 inl = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text="Downloading......", callback_data=f"down")]]
+    [[InlineKeyboardButton(text="جارر التحميل......", callback_data=f"down")]]
 )
 
 upl = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text="Uploading......", callback_data=f"down")]]
+    [[InlineKeyboardButton(text="تحميل......", callback_data=f"down")]]
 )
 
 
@@ -70,15 +70,15 @@ def inl_mark(videoid, user_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="Download or Upload Failed......", callback_data=f"down"
+                text="فشل التنزيل أو التحميل......", callback_data=f"down"
             )
         ],
         [
             InlineKeyboardButton(
-                text="⬅️  Go Back", callback_data=f"good {videoid}|{user_id}"
+                text="• رجوع •", callback_data=f"good {videoid}|{user_id}"
             ),
             InlineKeyboardButton(
-                text="🗑 Close Menu", callback_data=f"close2"
+                text="• اغلاق القائمة •", callback_data=f"close2"
             ),
         ],
     ]
@@ -108,14 +108,14 @@ async def boom(_, CallbackQuery):
         thumb_image_path = result["thumbnails"][0]["url"]
         channel = channel = result["channel"]["name"]
         fetched = f"""
-🔍**Track Downloaded**
+🔍**المسار الذي تم تنزيله**
 
 ❇️**Title:** {title}
 
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-🎥**Channel Name:** {channel}
-🔗**Video Link:** [Link]({yturl})
+⏳**المدة:** {duration} Mins
+👀**المشاهدات:** `{views}`
+🎥**اسم القناة:** {channel}
+🔗**رابط الفيديو:** [Link]({yturl})
 
 ⚡️ __Youtube Inline Download Powered By {MUSIC_BOT_NAME}__"""
     filext = "%(title)s.%(ext)s"
@@ -223,7 +223,7 @@ async def boom(_, CallbackQuery):
 
 def p_mark(link, channel):
     buttons = [
-        [InlineKeyboardButton(text="Watch on Youtube", url=f"{link}")],
+        [InlineKeyboardButton(text="• شاهده على يوتيوب •", url=f"{link}")],
     ]
     return buttons
 
@@ -260,7 +260,7 @@ import subprocess as sp
 
 def probe(vid_file_path):
     if type(vid_file_path) != str:
-        raise Exception("Give ffprobe a full file path of the file")
+        raise Exception("امنح ffprobe مسار ملف كامل للملف")
 
     command = [
         "ffprobe",
