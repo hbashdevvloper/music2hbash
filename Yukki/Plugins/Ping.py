@@ -9,16 +9,16 @@ from pyrogram.types import Message
 from Yukki import BOT_USERNAME, MUSIC_BOT_NAME, app, boottime
 from Yukki.Utilities.ping import get_readable_time
 
-__MODULE__ = "Essentials"
+__MODULE__ = "• اوامࢪ المساعده •"
 __HELP__ = """
 
-/ping - Check if Bot is alive or not.
+/ping - تحقق مما إذا كان البوت شغال أم لا.
 
-/start - Start the Bot.
+/start - اضهار جميع حقوق البوت.
 
-/help - Get Commands Helper Menu.
+/help - اضهار جميع اوامر البوت.
 
-/settings - Get Settings button.
+/settings - للحصول على اعدادات البوت.
 """
 
 
