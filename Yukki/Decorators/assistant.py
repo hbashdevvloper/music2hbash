@@ -19,7 +19,7 @@ async def unban_assistant_(_, CallbackQuery):
     a = await app.get_chat_member(CallbackQuery.message.chat.id, BOT_ID)
     if not a.can_restrict_members:
         return await CallbackQuery.answer(
-            "I am not having ban/unban user permission. Ask any admin to unban the assistant.",
+            "ليس لدي صلاحيه حظر/. اطلب من أي مسؤول إلغاء حظر المساعد.",
             show_alert=True,
         )
     else:
@@ -29,11 +29,11 @@ async def unban_assistant_(_, CallbackQuery):
             )
         except:
             return await CallbackQuery.answer(
-                "Failed to unban",
+                "فشل في فك الحظر",
                 show_alert=True,
             )
         return await CallbackQuery.edit_message_text(
-            "Assistant Unbanned. Try Playing Now."
+            "مساعد غير محظور. جرب التشغيل الآن."
         )
 
 
@@ -45,7 +45,7 @@ def AssistantAdd(mystic):
             assis = {
                 "saveassistant": ran_ass,
             }
-            await save_assistant(message.chat.id, "assistant", assis)
+            await save_assistant(message.chat.id, "مساعد ", assis)
         else:
             ran_ass = _assistant["saveassistant"]
         if ran_ass not in random_assistant:
@@ -53,7 +53,7 @@ def AssistantAdd(mystic):
             assis = {
                 "saveassistant": ran_ass,
             }
-            await save_assistant(message.chat.id, "assistant", assis)
+            await save_assistant(message.chat.id, "مساعد ", assis)
         ASS_ID, ASS_NAME, ASS_USERNAME, ASS_ACC = await get_assistant_details(
             ran_ass
         )
@@ -63,7 +63,7 @@ def AssistantAdd(mystic):
                 [
                     [
                         InlineKeyboardButton(
-                            text="🗑 Unban Assistant",
+                            text="الغاء حظر المساعد",
                             callback_data=f"unban_assistant a|{ASS_ID}",
                         )
                     ],
@@ -71,12 +71,12 @@ def AssistantAdd(mystic):
             )
             if b.status == "kicked":
                 return await message.reply_text(
-                    f"Assistant Account[{ASS_ID}] is banned.\nUnban it first to use Music Bot\n\nUsername: @{ASS_USERNAME}",
+                    f"حساب المساعد[{ASS_ID}] محظور.\قم بإلغاء الحظر أولاً لاستخدام\n\nUsername: @{ASS_USERNAME}",
                     reply_markup=key,
                 )
             if b.status == "banned":
                 return await message.reply_text(
-                    f"Assistant Account[{ASS_ID}] is banned.\nUnban it first to use Music Bot\n\nUsername: @{ASS_USERNAME}",
+                    f"حساب المساعد[{ASS_ID}] محظور.\قم بإلغاء الحظر أولاً لاستخدام\n\nUsername: @{ASS_USERNAME}",
                     reply_markup=key,
                 )
         except UserNotParticipant:
@@ -87,7 +87,7 @@ def AssistantAdd(mystic):
                     pass
                 except Exception as e:
                     await message.reply_text(
-                        f"__Assistant Failed To Join__\n\n**Reason**: {e}"
+                        f"__فشل انضمام المساعد  يرجى الاتصال بل دعم لحل المشكله  بوت الدعم : @J45Bot_\n\n**او تابع شروحات البوت @DJJJJJe:**: "
                     )
                     return
             else:
@@ -101,13 +101,13 @@ def AssistantAdd(mystic):
                         )
                     await ASS_ACC.join_chat(invitelink)
                     await message.reply(
-                        f"{ASS_NAME} Joined Successfully",
+                        f"{ASS_NAME} تم الانضمام بنجاح",
                     )
                 except UserAlreadyParticipant:
                     pass
                 except Exception as e:
                     await message.reply_text(
-                        f"__Assistant Failed To Join__\n\n**Reason**: {e}"
+                        f"__فشل انضمام المساعد  يرجى الاتصال بل دعم لحل المشكله  بوت الدعم : @J45Bot\n\n**او تابع شروحات البوت :@DJJJJJe**:"
                     )
                     return
         return await mystic(_, message)
