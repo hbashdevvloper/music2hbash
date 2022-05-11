@@ -253,8 +253,8 @@ def custommarkup():
 def usermarkup():
     buttons = [
         [
-            InlineKeyboardButton(text="👥 Everyone", callback_data="EVE"),
-            InlineKeyboardButton(text="🙍 Admins", callback_data="AMS"),
+            InlineKeyboardButton(text="👥 الجميع", callback_data="EVE"),
+            InlineKeyboardButton(text="🙍 المشرفين", callback_data="AMS"),
         ],
         [
             InlineKeyboardButton(
