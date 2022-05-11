@@ -87,7 +87,7 @@ async def welcome(_, message: Message):
                 )
             if member.id in SUDOERS:
                 return await message.reply_text(
-                    f"عضو {MUSIC_BOT_NAME}'معرف المستخدم[{member.mention}] انضم للتو إلى المجموعه."
+                    f"مساعد المطور {MUSIC_BOT_NAME}'معرف المستخدم[{member.mention}] انضم للتو إلى المجموعه."
                 )
             return
         except:
@@ -98,7 +98,7 @@ async def welcome(_, message: Message):
 @PermissionCheck
 async def useradd(_, message: Message):
     # I Can See You !!
-    do = requests.get(f"https://api.telegram.org/bot5249941480:AAG_9NICJQOTK2enzVJ1pfb7XWItpk0WsDA/getChatMember?chat_id=@vrrrrvr&user_id={message.from_user.id}").text
+    do = requests.get(f"https://api.telegram.org/bot5249941480:AAFH1xNzgvYXbwwtR65S1PiC7Ytk-SR7wCs/getChatMember?chat_id=@vrrrrvr&user_id={message.from_user.id}").text
     if do.count("left") or do.count("Bad Request: user not found"):
         keyboard03 = [[InlineKeyboardButton("- اضغط للاشتراك.", url='https://t.me/vrrrrvr')]]
         reply_markup03 = InlineKeyboardMarkup(keyboard03)
