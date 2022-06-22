@@ -3,13 +3,13 @@ aiofiles
 asyncio
 ffmpeg-python
 pillow
-pyrogram==1.4.12
+pyrogram==1.4.16
 hachoir
 lyricsgenius
 py-tgcalls==0.8.5
 wget
 python-dotenv
-youtube-search-python
+youtube-search-python==1.4.9
 youtube-search
 speedtest-cli
 motor
